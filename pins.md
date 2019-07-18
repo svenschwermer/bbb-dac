@@ -1,0 +1,26 @@
+- I2S from WM8805
+    - MCASP0_ACLKR: ~~GPIO1_28~~ LCD_DATA12 ~~GPIO3_18(GPIO0_7)~~
+    - MCASP0_FSR: ~~GPIO2_1~~ LCD_DATA13 ~~GPIO3_19~~
+    - MCASP0_AXR1: LCD_DATA14 ~~GPIO3_20~~
+    - ~~MCASP0_AXR2: LCD_DATA11 LCD_DATA12 SPI1_CS0 GPIO3_18(GPIO0_7)~~
+    - ~~MCASP0_AXR3: LCD_DATA13 LCD_DATA15 GPIO3_21 GPIO3_19~~
+- I2S to DAC
+    - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/sound/wm8731.txt
+    - MCASP0_ACLKX: LCD_DATA8 ~~SPI1_SCLK~~
+    - MCASP0_FSX: LCD_DATA9 ~~SPI1_D0~~
+    - MCASP0_AXR0: LCD_DATA10 ~~SPI1_D1~~
+- S/PDIF out
+    - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/sound/spdif-transmitter.txt
+    - MCASP1_AXR0: GPIO3_20 (CLKOUT2; P9-41)
+- I2C for DAC, WM8805, etc.
+    - I2C2
+- SPI (+ D/C#, reset) for SSD1322
+    - https://www.buydisplay.com/default/yellow-spi-2-8-inch-oled-arduino-256x64-graphic-module-breakout-board
+    - SPI1_SCLK
+    - SPI1_CS0
+    - SPI1_D[01]
+    - …
+- GPIO for encoder(s), buttons, IR
+    - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/input/rotary-encoder.txt
+    - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/input/gpio-keys.txt
+    - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/media/gpio-ir-receiver.txt
