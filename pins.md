@@ -1,26 +1,38 @@
 - I2S from WM8805
-    - MCASP0_ACLKR: ~~GPIO1_28~~ LCD_DATA12 ~~GPIO3_18(GPIO0_7)~~
-    - MCASP0_FSR: ~~GPIO2_1~~ LCD_DATA13 ~~GPIO3_19~~
-    - MCASP0_AXR1: LCD_DATA14 ~~GPIO3_20~~
-    - ~~MCASP0_AXR2: LCD_DATA11 LCD_DATA12 SPI1_CS0 GPIO3_18(GPIO0_7)~~
-    - ~~MCASP0_AXR3: LCD_DATA13 LCD_DATA15 GPIO3_21 GPIO3_19~~
+    - MCASP0\_ACLKR: ~~GPIO1\_28~~ LCD\_DATA12 ~~GPIO3\_18(GPIO0\_7)~~
+    - MCASP0\_FSR: ~~GPIO2\_1~~ LCD\_DATA13 ~~GPIO3\_19~~
+    - MCASP0\_AXR1: LCD\_DATA14 ~~GPIO3\_20~~
+    - ~~MCASP0\_AXR2: LCD\_DATA11 LCD\_DATA12 SPI1\_CS0 GPIO3\_18(GPIO0\_7)~~
+    - ~~MCASP0\_AXR3: LCD\_DATA13 LCD\_DATA15 GPIO3\_21 GPIO3\_19~~
 - I2S to DAC
     - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/sound/wm8731.txt
-    - MCASP0_ACLKX: LCD_DATA8 ~~SPI1_SCLK~~
-    - MCASP0_FSX: LCD_DATA9 ~~SPI1_D0~~
-    - MCASP0_AXR0: LCD_DATA10 ~~SPI1_D1~~
+    - MCASP0\_ACLKX: LCD\_DATA8 ~~SPI1\_SCLK~~
+    - MCASP0\_FSX: LCD\_DATA9 ~~SPI1\_D0~~
+    - MCASP0\_AXR0: LCD\_DATA10 ~~SPI1\_D1~~
+    - MCLK required?! GPIO3\_21 24.576MHz
 - S/PDIF out
     - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/sound/spdif-transmitter.txt
-    - MCASP1_AXR0: GPIO3_20 (CLKOUT2; P9-41)
+    - MCASP1\_AXR0: GPIO3\_20 (CLKOUT2; P9-41; potentially remove R20 if CLKOUT2 is required (MCLK, etc))
 - I2C for DAC, WM8805, etc.
     - I2C2
 - SPI (+ D/C#, reset) for SSD1322
     - https://www.buydisplay.com/default/yellow-spi-2-8-inch-oled-arduino-256x64-graphic-module-breakout-board
-    - SPI1_SCLK
-    - SPI1_CS0
-    - SPI1_D[01]
-    - …
+    - SPI1\_SCLK as SCLK
+    - SPI1\_CS0 as CS
+    - SPI1\_D1 as MOSI
+    - GPIO3\_19 as RESET
+    - SPI1\_D0 (GPIO3\_15) as D/C#
 - GPIO for encoder(s), buttons, IR
     - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/input/rotary-encoder.txt
     - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/input/gpio-keys.txt
     - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/media/gpio-ir-receiver.txt
+
+
+GND    1  2 VBAT
+NC     3  4 SCLK
+SDIN   5  6 NC
+GND    7  8 GND
+GND    9 10 GND
+GND   11 12 GND
+GND   13 14 DC
+RESET 15 16 CS
