@@ -11,4 +11,5 @@ SRC_URI += "file://0001-ARM-dts-am33xx-Added-macros-for-numeric-pinmux-addre.pat
             file://0005-arm-dts-Add-bbb-dac-device-tree.patch \
             file://oled.cfg \
             file://wm8731.cfg \
+            file://wm8804.cfg \
             "

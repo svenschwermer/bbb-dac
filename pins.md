@@ -1,14 +1,14 @@
 - I2S from WM8805
-    - MCASP0\_ACLKR: ~~GPIO1\_28~~ LCD\_DATA12 ~~GPIO3\_18(GPIO0\_7)~~
-    - MCASP0\_FSR: ~~GPIO2\_1~~ LCD\_DATA13 ~~GPIO3\_19~~
-    - MCASP0\_AXR1: LCD\_DATA14 ~~GPIO3\_20~~
+    - MCASP0\_ACLKR: ~~GPIO1\_28~~ LCD\_DATA12 (P8:35) ~~GPIO3\_18(GPIO0\_7)~~
+    - MCASP0\_FSR: ~~GPIO2\_1~~ LCD\_DATA13 (P8:33) ~~GPIO3\_19~~
+    - MCASP0\_AXR1: LCD\_DATA14 (P8:31) ~~GPIO3\_20~~
     - ~~MCASP0\_AXR2: LCD\_DATA11 LCD\_DATA12 SPI1\_CS0 GPIO3\_18(GPIO0\_7)~~
     - ~~MCASP0\_AXR3: LCD\_DATA13 LCD\_DATA15 GPIO3\_21 GPIO3\_19~~
 - I2S to DAC
     - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/sound/wm8731.txt
-    - MCASP0\_ACLKX: LCD\_DATA8 ~~SPI1\_SCLK~~
-    - MCASP0\_FSX: LCD\_DATA9 ~~SPI1\_D0~~
-    - MCASP0\_AXR0: LCD\_DATA10 ~~SPI1\_D1~~
+    - MCASP0\_ACLKX: LCD\_DATA8 (P8:37) ~~SPI1\_SCLK~~
+    - MCASP0\_FSX: LCD\_DATA9 (P8:38) ~~SPI1\_D0~~
+    - MCASP0\_AXR0: LCD\_DATA10 (P8:36) ~~SPI1\_D1~~
     - MCLK required?! GPIO3\_21 24.576MHz
 - S/PDIF out
     - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/sound/spdif-transmitter.txt
@@ -27,12 +27,3 @@
     - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/input/gpio-keys.txt
     - https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/media/gpio-ir-receiver.txt
 
-
-GND    1  2 VBAT
-NC     3  4 SCLK
-SDIN   5  6 NC
-GND    7  8 GND
-GND    9 10 GND
-GND   11 12 GND
-GND   13 14 DC
-RESET 15 16 CS
